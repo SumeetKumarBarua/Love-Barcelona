@@ -1,0 +1,61 @@
+<app-layout>
+  
+    <h1>
+      Competitions
+    </h1>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <div class="card">
+            <div class="card-block">
+              <h3 class="card-title">La-Liga</h3>
+              <p class="card-text"></p>
+            </div>
+            <div class="card-footer">
+              <a (click)="fetchLaliga()" class="btn btn-sm btn-link">La-Liga</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <div class="card">
+            <div class="card-block">
+              <h3 class="card-title">UEFA CHAMPIONS LEAGUE</h3>
+              <p class="card-text"></p>
+            </div>
+            <div class="card-footer">
+              <a (click)="fetchUefa()" class="btn btn-sm btn-link">UEFA</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <div class="card">
+            <div class="card-block">
+              <h3 class="card-title">COPA DEL RAY</h3>
+              <p class="card-text"></p>
+            </div>
+            <div class="card-footer">
+              <a (click)="fetchCopa()" class="btn btn-sm btn-link">COPA</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <br><br>
+
+      
+      <div *ngFor = "let r of results">
+          <header class="header-3">
+            <h3 style="color: #ffffff; margin-left: 20em">{{r.date}}</h3>
+          </header>
+          <header style="background-color: #eaeaea">
+              <h3 style="margin-left: 16em">{{r.competition | uppercase }}</h3>
+          </header>
+            <header style="background-color: #ffffff">
+                <h3 style="margin-left: 14em">FC Barcelona ({{r.barcelonaGoals}} - {{r.oppositionGoals}}) {{r.opponent}}</h3>
+            </header><br>
+    </div>
+
+    <div class="error active" *ngIf = "empty">
+        No matches found
+    </div>
+ 
+</app-layout>

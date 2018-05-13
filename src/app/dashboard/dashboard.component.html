@@ -1,0 +1,20 @@
+<app-layout>
+  
+    <h1>
+      Match Results
+    </h1>
+    
+<div *ngFor = "let r of results">
+      <header class="header-3">
+        <h3 style="color: #ffffff; margin-left: 20em">{{r.date}}</h3>
+      </header>
+      <header style="background-color: #eaeaea">
+          <h3 style="margin-left: 16em">{{r.competition | uppercase }}</h3>
+      </header>
+        <header style="background-color: #ffffff">
+            <h3 style="margin-left: 14em">FC Barcelona ({{r.barcelonaGoals}} - {{r.oppositionGoals}}) {{r.opponent}}</h3>
+        </header><br>
+</div>
+
+ 
+</app-layout>

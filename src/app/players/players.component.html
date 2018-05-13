@@ -1,0 +1,125 @@
+<app-layout>
+  
+    <h4><a (click) = "addModal()"> + Add players </a></h4>
+
+    <h1>
+      Classic Players
+    </h1>
+    
+    <table class="table">
+      <th></th>
+      <th>Full Name</th>
+      <th>Nationality</th>
+      <th>Age</th>
+      <th>Jersey</th>
+      <th>Position</th>
+      <th>Rating</th>
+      <th></th>
+      <th></th>
+      <tr *ngFor = "let p of players">
+          <img src="{{p.imageURL}}" alt="image"  height="50" align="middle">
+        <td><a (click)="openModal($event, p)" href="">{{p.fullName}}</a></td>
+        <td>{{p.nationality}}</td>
+        <td>{{p.age}}</td>
+        <td>{{p.shirtNumber}}</td>
+        <td>{{p.position}}</td>
+        <td>{{p.rating}}</td>
+        <td><button class="btn btn-warning" (click) = "delete(p)">DELETE</button></td>
+        <td><button class="btn btn-primary" (click) = "updateModal(p)">UPDATE</button></td>
+        
+      </tr>
+    </table>
+    
+
+      <clr-modal [(clrModalOpen)]="showModal">        
+        <div class="modal-body">
+            <img src="{{url}}" alt="image"  height="150" style="margin-left: 12em"> <br/>
+            <h2 style="margin-left: 3em">{{name}}</h2>
+            <p>{{description}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="closeModal()">OK</button>
+        </div>
+      </clr-modal>
+
+
+      <clr-modal [(clrModalOpen)]="forDelete">        
+          <div class="modal-body">
+              <h4>Do you want to delete {{fullname}} ?</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" (click)="deleteplayers()">DELETE</button>
+            <button type="button" class="btn btn-primary" (click)="closeModal()">CANCEL</button>
+          </div>
+      </clr-modal>
+
+
+      <clr-modal [(clrModalOpen)]="add">
+          <div class="modal-body">
+              <h4>Add Player</h4> 
+              <form id = "formNewPlayer" name = "formNewPlayer"
+                    #playerData = "ngForm" (ngSubmit) = "addNewPlayer(playerData.value)">                                   
+                  <div >                          
+                      <input type="text" name="fullName" id="formFields_1" placeholder="Full Name" size="30" ngModel>                          
+                      <input type="text" name="nationality" id="formFields_2" placeholder="Nationality" size="30" ngModel>                        
+                      <input type="text" name="position" id="formFields_3" placeholder="Playing Position" size="30" ngModel><br>
+                      <input type="number" name="age" id="formFields_4" placeholder="Age" size="30" ngModel><br>
+                      <input type="number" name="shirtNumber" id="formFields_5" placeholder="Jersey Number" size="30" ngModel><br>
+                      <input type="number" name="rating" id="formFields_6" placeholder="Rating" size="30" ngModel>
+                  </div>   
+                      <!-- <div class="container row col-md-4 col-md-offset-6"> -->
+                        <span style="margin-left: 23em">
+                        <button type="button" class="btn btn-primary-outline" (click)="closeModal()">CANCEL</button>     
+                        <button type="submit" value = "OK" class="btn btn-primary">OK</button>
+                      </span>
+                      
+                    </form>
+          </div>          
+      </clr-modal>
+
+
+      <clr-modal [(clrModalOpen)]="isAdded">        
+          <div class="modal-body">              
+              <h2>Player Added Successfully</h2>              
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="closeModal()">OK</button>
+          </div>
+      </clr-modal>
+
+
+      <clr-modal [(clrModalOpen)]="isUpdated">        
+          <div class="modal-body">              
+              <h2>Player Data Updated Successfully</h2>              
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="closeModal()">OK</button>
+          </div>
+      </clr-modal>
+
+
+
+      <clr-modal [(clrModalOpen)]="update">
+          <div class="modal-body">
+              <h4>Update Player Details</h4> 
+              <form id = "formUpdatePlayer" name = "formUpdatePlayer"
+                    #playerData1 = "ngForm" (ngSubmit) = "updatePlayer(playerData1.value)">                                   
+                  <div>                          
+                      <input type="text" name="fullName" id="formFields_1" placeholder="Full Name" size="30" [(ngModel)] = "pName" ngModel>                          
+                      <input type="text" name="nationality" id="formFields_2" placeholder="Nationality" size="30" [(ngModel)] = "pNationality" ngModel>                        
+                      <input type="text" name="position" id="formFields_3" placeholder="Playing Position" size="30" [(ngModel)] = "pPosition" ngModel><br>
+                      <input type="number" name="age" id="formFields_4" placeholder="Age" size="30" [(ngModel)] = "pAge" ngModel><br>
+                      <input type="number" name="shirtNumber" id="formFields_5" placeholder="Jersey Number" size="30" [(ngModel)] = "pJersey" ngModel><br>
+                      <input type="number" name="rating" id="formFields_6" placeholder="Rating" size="30" [(ngModel)] = "pRating" ngModel><br>
+                      <input type="text" name="imageURL" id="formFields_7" placeholder="imageURL" size="30" [(ngModel)] = "pimageURL" ngModel disabled>
+
+                    </div>                         
+                        <span style="margin-left: 23em">
+                        <button type="button" class="btn btn-primary-outline" (click)="closeModal()">CANCEL</button>     
+                        <button type="submit" value = "OK" class="btn btn-primary">OK</button>
+                      </span>                      
+                    </form>
+          </div>          
+      </clr-modal>
+  
+</app-layout>
