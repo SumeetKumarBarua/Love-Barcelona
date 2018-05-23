@@ -1,5 +1,7 @@
-# Angular4-ClarityUI
+# Love Barcelona (ng4-ClarityUI)
 
+# In Action
+![alt tag](https://github.com/SumeetKumarBarua/Angular4-ClarityUI/blob/master/app.gif)
 
 # MasterProject
 
