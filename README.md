@@ -1,4 +1,4 @@
-# Love Barcelona (ng4-ClarityUI)
+# ❤️ Barcelona (ng4-Clarity)
 
 # In Action
 ![alt tag](https://github.com/SumeetKumarBarua/Angular4-ClarityUI/blob/master/app.gif)
